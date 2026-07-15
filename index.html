@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sloth Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <script src="gallery-data.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            letter-spacing: 0.5em;
+            font-weight: 300;
+            font-size: 2em;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        /* 部屋選択UI */
+        .room-selector {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .room-button {
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            color: #666;
+            cursor: pointer;
+            padding: 15px 30px;
+            letter-spacing: 0.2em;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .room-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: #999;
+            transition: all 0.5s ease;
+            transform: translateX(-50%);
+        }
+
+        .room-button:hover::after,
+        .room-button.active::after {
+            width: 100%;
+        }
+
+        .room-button:hover,
+        .room-button.active {
+            color: #333;
+        }
+
+        /* 部屋コンテナ */
+        .room {
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .room.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 各部屋の背景色 */
+        .room-morning {
+            background-color: #E8E8E8;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .room-afternoon {
+            background-color: #EFE9DE;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .room-evening {
+            background-color: #DCE3E8;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .room-title {
+            color: #333;
+            font-weight: 300;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            letter-spacing: 0.3em;
+        }
+
+        /* ギャラリー */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .room-selector {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+        }
+
+        /* カードスタイル - ミニマルな画像表示 */
+        .gallery-item {
+            position: relative;
+            background: transparent;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: none;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 10px;
+        }
+
+ /* ゆっくりしたスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sloth Time</h1>
+
+        <!-- 部屋選択UI -->
+        <div class="room-selector">
+            <button class="room-button active" data-room="morning">Morning</button>
+            <button class="room-button" data-room="day">Day</button>
+            <button class="room-button" data-room="night">Night</button>
+        </div>
+
+        <!-- Morning Room -->
+        <div class="room room-morning active" id="room-morning">
+            <h2 class="room-title">Morning</h2>
+            <div class="gallery" id="gallery-morning">
+                <!-- JavaScriptで画像を読み込みます -->
+            </div>
+        </div>
+
+        <!-- Day Room -->
+        <div class="room room-afternoon" id="room-day">
+            <h2 class="room-title">Day</h2>
+            <div class="gallery" id="gallery-day">
+                <!-- JavaScriptで画像を読み込みます -->
+            </div>
+        </div>
+
+        <!-- Night Room -->
+        <div class="room room-evening" id="room-night">
+            <h2 class="room-title">Night</h2>
+            <div class="gallery" id="gallery-night">
+                <!-- JavaScriptで画像を読み込みます -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 部屋切り替え
+        const roomButtons = document.querySelectorAll('.room-button');
+        const rooms = document.querySelectorAll('.room');
+
+        roomButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const roomName = button.dataset.room;
+
+                // ボタンのアクティブ状態を切り替え
+                roomButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // 部屋の表示を切り替え
+                rooms.forEach(room => room.classList.remove('active'));
+                document.getElementById(`room-${roomName}`).classList.add('active');
+            });
+        });
+
+        // データ駆動型ギャラリー読み込み
+        function loadGallery() {
+            const galleries = {
+                morning: document.getElementById('gallery-morning'),
+                day: document.getElementById('gallery-day'),
+                night: document.getElementById('gallery-night')
+            };
+
+            // 各部屋のアートワークをファイル番号の降順（新しい順）にソートして表示
+            ['morning', 'day', 'night'].forEach(room => {
+                const roomArtworks = galleryData
+                    .filter(artwork => artwork.room === room)
+                    .sort((a, b) => {
+                        // ファイル名から数字を抽出して降順ソート
+                        const numA = parseInt(a.image.match(/\d+/)[0]);
+                        const numB = parseInt(b.image.match(/\d+/)[0]);
+                        return numB - numA;
+                    });
+
+                roomArtworks.forEach(artwork => {
+                    createGalleryItem(galleries[room], artwork);
+                });
+            });
+        }
+
+        function createGalleryItem(gallery, artwork) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+
+            const img = document.createElement('img');
+            img.src = `gallery/${artwork.image}`;
+            img.alt = artwork.title || 'Artwork';
+
+            img.onload = function() {
+                // Image loaded successfully
+            };
+
+            img.onerror = function() {
+                item.remove();
+            };
+
+            item.appendChild(img);
+            gallery.appendChild(item);
+        }
+
+        // ページ読み込み時にギャラリーを初期化
+        document.addEventListener('DOMContentLoaded', loadGallery);
+    </script>
+</body>
+</html>
