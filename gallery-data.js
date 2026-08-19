@@ -7,113 +7,113 @@ const galleryData = [
         image: "Morning/all41.png",
         room: "morning",
         order: 1,
-        title: "",
+        title: "潮騒",
         caption: "",
-        date: ""
+        date: "2026.07.28"
     },
     {
         image: "Morning/all40.png",
         room: "morning",
         order: 2,
-        title: "",
+        title: "灼熱",
         caption: "",
-        date: ""
+        date: "2026.07.23"
     },
     {
         image: "Morning/all39.png",
         room: "morning",
         order: 3,
-        title: "",
+        title: "海…広いね",
         caption: "",
-        date: ""
+        date: "2026.07.20"
     },
     {
         image: "Morning/all36.png",
         room: "morning",
         order: 4,
-        title: "",
+        title: "ナカーマ",
         caption: "",
-        date: ""
+        date: "2026.07.10"
     },
     {
         image: "Morning/all35.png",
         room: "morning",
         order: 5,
-        title: "",
+        title: "トンボとすろーす",
         caption: "",
-        date: ""
+        date: "2026.07.14"
     },
     {
         image: "Morning/all34.png",
         room: "morning",
         order: 6,
-        title: "",
+        title: "真夏の朝の水やり",
         caption: "",
-        date: ""
+        date: "2026.07.13"
     },
     {
         image: "Morning/all09.png",
         room: "morning",
         order: 7,
-        title: "",
+        title: "紫陽花日和",
         caption: "",
-        date: ""
+        date: "2026.05.28"
     },
     {
         image: "Morning/all10.png",
         room: "morning",
         order: 8,
-        title: "",
+        title: "紫陽花と太陽",
         caption: "",
-        date: ""
+        date: "2026.05.28"
     },
     {
         image: "Morning/all12.png",
         room: "morning",
         order: 9,
-        title: "",
+        title: "土砂降り",
         caption: "",
-        date: ""
+        date: "2026.06.03"
     },
     {
         image: "Morning/all16.jpg",
         room: "morning",
         order: 10,
-        title: "",
+        title: "キュウリの花",
         caption: "",
-        date: ""
+        date: "2026.06.04"
     },
     {
         image: "Morning/all17.jpg",
         room: "morning",
         order: 11,
-        title: "",
+        title: "朝顔",
         caption: "",
-        date: ""
+        date: "2026.06.06"
     },
     {
         image: "Morning/all18.jpg",
         room: "morning",
         order: 12,
-        title: "",
+        title: "色待宵草（イロマツヨイグサ）",
         caption: "",
-        date: ""
+        date: "2026.06.07"
     },
     {
         image: "Morning/all19.jpg",
         room: "morning",
         order: 13,
-        title: "",
+        title: "雨上がり",
         caption: "",
-        date: ""
+        date: "2026.06.09"
     },
     {
         image: "Morning/all20.jpg",
         room: "morning",
         order: 14,
-        title: "",
+        title: "初夏の朝",
         caption: "",
-        date: ""
+        date: "2026.06.14"
     },
     {
         image: "Morning/all21.jpg",

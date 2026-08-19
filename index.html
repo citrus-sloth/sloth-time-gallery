@@ -156,14 +156,14 @@
         /* ギャラリー */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px 30px;
         }
 
         @media (max-width: 768px) {
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                gap: 36px 20px;
             }
 
             .room-selector {
@@ -182,24 +182,68 @@
             position: relative;
             background: transparent;
             padding: 0;
-            border-radius: 10px;
-            box-shadow: none;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: transform 0.5s ease;
             cursor: pointer;
-            overflow: hidden;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item .frame {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: box-shadow 0.5s ease;
+        }
+
+        .gallery-item:hover .frame {
+            box-shadow: 0 6px 14px rgba(0,0,0,0.14);
         }
 
         .gallery-item img {
-            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
             height: auto;
             object-fit: contain;
             display: block;
-            border-radius: 10px;
+        }
+
+        /* キャプションは「カード」にせず、部屋の背景に文字だけを置く */
+        .gallery-item .caption-box {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 10px 2px 0;
+        }
+
+        .gallery-item .item-title {
+            font-size: 0.85em;
+            font-weight: 300;
+            color: #666;
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .gallery-item .item-date {
+            font-size: 0.65em;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        .gallery-item .item-caption {
+            font-size: 0.8em;
+            font-weight: 300;
+            color: #777;
+            line-height: 1.5;
         }
 
  /* ゆっくりしたスクロール */
@@ -393,6 +437,9 @@
             const item = document.createElement('div');
             item.className = 'gallery-item';
 
+            const frame = document.createElement('div');
+            frame.className = 'frame';
+
             const img = document.createElement('img');
             img.src = `gallery/${artwork.image}`;
             img.alt = artwork.title || 'Artwork';
@@ -405,7 +452,40 @@
                 item.remove();
             };
 
-            item.appendChild(img);
+            frame.appendChild(img);
+            item.appendChild(frame);
+
+            // タイトル・日付・説明文のいずれかがある場合のみ表示
+            if (artwork.title || artwork.date || artwork.caption) {
+                item.classList.add('has-caption');
+
+                const captionBox = document.createElement('div');
+                captionBox.className = 'caption-box';
+
+                if (artwork.title) {
+                    const titleEl = document.createElement('div');
+                    titleEl.className = 'item-title';
+                    titleEl.textContent = artwork.title;
+                    captionBox.appendChild(titleEl);
+                }
+
+                if (artwork.date) {
+                    const dateEl = document.createElement('div');
+                    dateEl.className = 'item-date';
+                    dateEl.textContent = artwork.date;
+                    captionBox.appendChild(dateEl);
+                }
+
+                if (artwork.caption) {
+                    const captionEl = document.createElement('div');
+                    captionEl.className = 'item-caption';
+                    captionEl.textContent = artwork.caption;
+                    captionBox.appendChild(captionEl);
+                }
+
+                item.appendChild(captionBox);
+            }
+
             gallery.appendChild(item);
         }
 
