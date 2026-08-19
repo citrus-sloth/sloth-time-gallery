@@ -119,73 +119,73 @@ const galleryData = [
         image: "Morning/all21.jpg",
         room: "morning",
         order: 15,
-        title: "",
+        title: "風見すろーす",
         caption: "",
-        date: ""
+        date: "2026.06.15"
     },
     {
         image: "Morning/all22.jpg",
         room: "morning",
         order: 16,
-        title: "",
+        title: "Rain",
         caption: "",
-        date: ""
+        date: "2026.06.20"
     },
     {
         image: "Morning/all23.jpg",
         room: "morning",
         order: 17,
-        title: "",
+        title: "クローバー",
         caption: "",
-        date: ""
+        date: "2026.06.22"
     },
     {
         image: "Morning/all26.png",
         room: "morning",
         order: 18,
-        title: "",
+        title: "Sloth Time",
         caption: "",
-        date: ""
+        date: "2026.06.28"
     },
     {
         image: "Morning/all27.png",
         room: "morning",
         order: 19,
-        title: "",
+        title: "朝のお見送り",
         caption: "",
-        date: ""
+        date: "2026.06.29"
     },
     {
         image: "Morning/all29.png",
         room: "morning",
         order: 20,
-        title: "",
+        title: "チョコアイスすろース",
         caption: "",
-        date: ""
+        date: "2026.07.02"
     },
     {
         image: "Morning/all30.png",
         room: "morning",
         order: 21,
-        title: "",
+        title: "Cactus",
         caption: "",
-        date: ""
+        date: "2026.07.04"
     },
     {
         image: "Morning/all31.png",
         room: "morning",
         order: 22,
-        title: "",
+        title: "羽ばたく",
         caption: "",
-        date: ""
+        date: "2026.07.06"
     },
     {
         image: "Morning/all32.png",
         room: "morning",
         order: 23,
-        title: "",
+        title: "クルクルのびる、朝顔の蔓",
         caption: "",
-        date: ""
+        date: "2026.07.08"
     },
 
     // Day Room
