@@ -95,7 +95,7 @@ const galleryData = [
         image: "Morning/all18.jpg",
         room: "morning",
         order: 12,
-        title: "色待宵草（イロマツヨイグサ）",
+        title: "色待宵草",
         caption: "",
         date: "2026.06.07"
     },
