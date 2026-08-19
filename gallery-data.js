@@ -193,81 +193,81 @@ const galleryData = [
         image: "Day/all42.png",
         room: "day",
         order: 1,
-        title: "",
+        title: "線香花火",
         caption: "",
-        date: ""
+        date: "2026.07.30"
     },
     {
         image: "Day/all38.png",
         room: "day",
         order: 2,
-        title: "",
+        title: "真夏日",
         caption: "",
-        date: ""
+        date: "2026.07.19"
     },
     {
         image: "Day/all37.png",
         room: "day",
         order: 3,
-        title: "",
+        title: "海に行きたいな",
         caption: "",
-        date: ""
+        date: "2026.07.16"
     },
     {
         image: "Day/all01.jpeg",
         room: "day",
         order: 4,
-        title: "",
+        title: "お昼寝",
         caption: "",
-        date: ""
+        date: "2026.04.04"
     },
     {
         image: "Day/all15.png",
         room: "day",
         order: 5,
-        title: "",
+        title: "すろーすDonuts",
         caption: "",
-        date: ""
+        date: "2026.06.27"
     },
     {
         image: "Day/all13.png",
         room: "day",
         order: 6,
-        title: "",
+        title: "夏とカメ",
         caption: "",
-        date: ""
+        date: "2026.06.17"
     },
     {
         image: "Day/all14.png",
         room: "day",
         order: 7,
-        title: "",
+        title: "すろーすDonuts",
         caption: "",
-        date: ""
+        date: "2026.06.27"
     },
     {
         image: "Day/all24.jpg",
         room: "day",
         order: 8,
-        title: "",
+        title: "ミックスソフトクリームと珈琲",
         caption: "",
-        date: ""
+        date: "2026.06.23"
     },
     {
         image: "Day/all25.jpg",
         room: "day",
         order: 9,
-        title: "",
+        title: "エクレア",
         caption: "",
-        date: ""
+        date: "2026.06.25"
     },
     {
         image: "Day/all28.png",
         room: "day",
         order: 10,
-        title: "",
+        title: "チョコアイスクリーム",
         caption: "",
-        date: ""
+        date: "2026.06.30"
     },
 
     // Night Room
@@ -275,16 +275,16 @@ const galleryData = [
         image: "Night/all41.png",
         room: "night",
         order: 1,
-        title: "",
+        title: "お祭り",
         caption: "",
-        date: ""
+        date: "2026.07.24"
     },
     {
         image: "Night/all11.png",
         room: "night",
         order: 2,
-        title: "",
+        title: "月夜",
         caption: "",
-        date: ""
+        date: "2026.05.28"
     }
 ];
