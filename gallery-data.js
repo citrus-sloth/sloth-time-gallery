@@ -187,6 +187,30 @@ const galleryData = [
         caption: "",
         date: "2026.07.08"
     },
+    {
+        image: "Morning/all43.png",
+        room: "morning",
+        order: 24,
+        title: "朝顔",
+        caption: "",
+        date: "2026.08.11"
+    },
+    {
+        image: "Morning/all44.png",
+        room: "morning",
+        order: 25,
+        title: "海の中",
+        caption: "",
+        date: "2026.08.07"
+    },
+    {
+        image: "Morning/all45.png",
+        room: "morning",
+        order: 26,
+        title: "夏かぜ",
+        caption: "",
+        date: "2026.08.10"
+    },
 
     // Day Room
     {
@@ -268,6 +292,14 @@ const galleryData = [
         title: "チョコアイスクリーム",
         caption: "",
         date: "2026.06.30"
+    },
+    {
+        image: "Day/all45.png",
+        room: "day",
+        order: 11,
+        title: "マンゴーフラペチーノ",
+        caption: "",
+        date: "2026.08.02"
     },
 
     // Night Room
