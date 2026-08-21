@@ -163,17 +163,47 @@
             }
         }
 
-        /* ギャラリー - イラストは元の比率のまま、日付順(新しい順)に行ごとに配置 */
+        /* ギャラリー - 「左右ペア」→「真ん中1枚」を繰り返す交互リズム配置(新しい順) */
         .gallery {
             display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            gap: 30px;
+            flex-direction: column;
+            gap: 130px;
+        }
+
+        .gallery-row-pair,
+        .gallery-row-single {
+            display: flex;
+            width: 100%;
+        }
+
+        .gallery-row-pair {
+            justify-content: center;
+            gap: 50px;
+        }
+
+        @media (min-width: 769px) {
+            .gallery-row-pair {
+                gap: 220px;
+            }
+        }
+
+        .gallery-row-single {
+            justify-content: center;
+        }
+
+        .gallery-row-pair .gallery-item,
+        .gallery-row-single .gallery-item {
+            width: calc((100% - 60px) / 3);
         }
 
         @media (max-width: 768px) {
             .gallery {
-                gap: 20px;
+                gap: 60px;
+            }
+
+            .gallery-row-pair .gallery-item,
+            .gallery-row-single .gallery-item {
+                width: calc((100% - 20px) / 2);
             }
 
             .room-selector {
@@ -192,17 +222,9 @@
             position: relative;
             background: transparent;
             padding: 0;
-            width: calc((100% - 60px) / 3);
-            margin-bottom: 100px;
+            width: 100%;
             transition: transform 0.5s ease;
             cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-item {
-                width: calc((100% - 20px) / 2);
-                margin-bottom: 70px;
-            }
         }
 
         .gallery-item:hover {
@@ -453,15 +475,39 @@
                         return dateB - dateA;
                     });
 
-                roomArtworks.forEach(artwork => {
-                    createGalleryItem(galleries[room], artwork);
-                });
+                // 新しい順のまま3枚ずつ区切り、「左右ペア」の行→「真ん中1枚」の行、を繰り返す
+                const roomGallery = galleries[room];
+                for (let i = 0; i < roomArtworks.length; i += 3) {
+                    const group = roomArtworks.slice(i, i + 3);
+
+                    if (group.length >= 2) {
+                        const pairRow = document.createElement('div');
+                        pairRow.className = 'gallery-row-pair';
+                        roomGallery.appendChild(pairRow);
+                        // 2枚並ぶときは、左が少し上・右が少し下で揃える
+                        createGalleryItem(pairRow, group[0], roomGallery, -14);
+                        createGalleryItem(pairRow, group[1], roomGallery, 14);
+
+                        if (group[2]) {
+                            const singleRow = document.createElement('div');
+                            singleRow.className = 'gallery-row-single';
+                            roomGallery.appendChild(singleRow);
+                            createGalleryItem(singleRow, group[2], roomGallery, 0);
+                        }
+                    } else if (group.length === 1) {
+                        const singleRow = document.createElement('div');
+                        singleRow.className = 'gallery-row-single';
+                        roomGallery.appendChild(singleRow);
+                        createGalleryItem(singleRow, group[0], roomGallery, 0);
+                    }
+                }
             });
         }
 
-        function createGalleryItem(gallery, artwork) {
+        function createGalleryItem(row, artwork, roomGallery, verticalOffset) {
             const item = document.createElement('div');
             item.className = 'gallery-item';
+            item.style.marginTop = `${verticalOffset}px`;
 
             const frame = document.createElement('div');
             frame.className = 'frame';
@@ -514,7 +560,7 @@
                 // クリックでタイトル等をそっと表示。同じ部屋で開くのは常に1つだけ
                 item.addEventListener('click', () => {
                     const wasRevealed = item.classList.contains('revealed');
-                    gallery.querySelectorAll('.gallery-item.revealed').forEach(el => {
+                    roomGallery.querySelectorAll('.gallery-item.revealed').forEach(el => {
                         el.classList.remove('revealed');
                     });
                     if (!wasRevealed) {
@@ -523,7 +569,7 @@
                 });
             }
 
-            gallery.appendChild(item);
+            row.appendChild(item);
         }
 
         // ページ読み込み時にギャラリーを初期化
