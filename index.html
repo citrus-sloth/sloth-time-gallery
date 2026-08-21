@@ -228,11 +228,22 @@
         }
 
         /* キャプションは「カード」にせず、部屋の背景に文字だけを置く */
+        /* 初期状態は非表示にしておき、クリックでそっと現れる */
         .gallery-item .caption-box {
             background: transparent;
             border: none;
             box-shadow: none;
             padding: 10px 2px 0;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item.revealed .caption-box {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
         .gallery-item .item-title {
@@ -499,6 +510,17 @@
                 }
 
                 item.appendChild(captionBox);
+
+                // クリックでタイトル等をそっと表示。同じ部屋で開くのは常に1つだけ
+                item.addEventListener('click', () => {
+                    const wasRevealed = item.classList.contains('revealed');
+                    gallery.querySelectorAll('.gallery-item.revealed').forEach(el => {
+                        el.classList.remove('revealed');
+                    });
+                    if (!wasRevealed) {
+                        item.classList.add('revealed');
+                    }
+                });
             }
 
             gallery.appendChild(item);
