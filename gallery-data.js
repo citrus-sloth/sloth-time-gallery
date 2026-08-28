@@ -211,6 +211,14 @@ const galleryData = [
         caption: "",
         date: "2026.08.10"
     },
+    {
+        image: "Morning/all47.png",
+        room: "morning",
+        order: 27,
+        title: "秋の雨",
+        caption: "",
+        date: "2026.08.28"
+    },
 
     // Day Room
     {
@@ -294,7 +302,7 @@ const galleryData = [
         date: "2026.06.30"
     },
     {
-        image: "Day/all45.png",
+        image: "Day/all46.png",
         room: "day",
         order: 11,
         title: "マンゴーフラペチーノ",
