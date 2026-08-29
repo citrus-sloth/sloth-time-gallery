@@ -333,6 +333,14 @@ const galleryData = [
         caption: "",
         date: "2026.08.02"
     },
+    {
+        image: "Day/all02.png",
+        room: "day",
+        order: 12,
+        title: "Banana",
+        caption: "",
+        date: "2026.04.18"
+    },
 
     // Night Room
     {
