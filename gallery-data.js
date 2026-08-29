@@ -243,6 +243,14 @@ const galleryData = [
         caption: "",
         date: "2026.05.23"
     },
+    {
+        image: "Morning/all03.png",
+        room: "morning",
+        order: 31,
+        title: "イチゴとすろーす",
+        caption: "",
+        date: "2026.04.08"
+    },
 
     // Day Room
     {
