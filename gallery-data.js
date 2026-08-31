@@ -366,5 +366,13 @@ const galleryData = [
         title: "月夜",
         caption: "",
         date: "2026.05.28"
+    },
+    {
+        image: "Night/all48.png",
+        room: "night",
+        order: 3,
+        title: "秋の夕暮れ",
+        caption: "",
+        date: "2026.08.31"
     }
 ];
