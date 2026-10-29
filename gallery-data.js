@@ -267,6 +267,24 @@ const galleryData = [
         caption: "",
         date: "2026.06.23"
     },
+    {
+        image: "Morning/all50.png",
+        room: "morning",
+        order: 34,
+        title: "Halloween",
+        tight: true,
+        caption: "",
+        date: "2026.10.25"
+    },
+    {
+        image: "Morning/all53.png",
+        room: "morning",
+        order: 35,
+        title: "Halloween",
+        tight: true,
+        caption: "",
+        date: "2026.10.28"
+    },
 
     // Day Room
     {
@@ -365,6 +383,15 @@ const galleryData = [
         caption: "",
         date: "2026.04.18"
     },
+    {
+        image: "Day/all51.png",
+        room: "day",
+        order: 13,
+        title: "Halloween Party",
+        tight: true,
+        caption: "",
+        date: "2026.10.26"
+    },
 
     // Night Room
     {
@@ -390,5 +417,14 @@ const galleryData = [
         title: "秋の夕暮れ",
         caption: "",
         date: "2026.08.31"
+    },
+    {
+        image: "Night/all52.png",
+        room: "night",
+        order: 4,
+        title: "Halloween Night",
+        tight: true,
+        caption: "",
+        date: "2026.10.28"
     }
 ];

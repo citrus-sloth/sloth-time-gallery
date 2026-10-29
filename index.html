@@ -277,6 +277,12 @@
             margin-bottom: 2px;
         }
 
+        /* アルファベットのタイトルを詰めて表示する(gallery-data.jsで tight: true を付けた作品) */
+        .gallery-item .item-title.title-tight,
+        .lightbox-title.title-tight {
+            letter-spacing: -0.04em;
+        }
+
         .gallery-item .item-date {
             font-family: 'Klee One', cursive;
             font-size: 0.75em;
@@ -608,6 +614,7 @@
                     const titleEl = document.createElement('div');
                     titleEl.className = 'item-title';
                     titleEl.textContent = artwork.title;
+                    if (artwork.tight) titleEl.classList.add('title-tight');
                     captionBox.appendChild(titleEl);
                 }
 
@@ -663,7 +670,9 @@
             // 背景が透けている画像もギャラリーと同じ見え方になるよう、部屋の背景色を敷く
             const roomEl = document.getElementById(`room-${artwork.room}`);
             img.style.backgroundColor = roomEl ? getComputedStyle(roomEl).backgroundColor : '#fff';
-            lightbox.querySelector('.lightbox-title').textContent = artwork.title || '';
+            const lbTitle = lightbox.querySelector('.lightbox-title');
+            lbTitle.textContent = artwork.title || '';
+            lbTitle.classList.toggle('title-tight', !!artwork.tight);
             lightbox.querySelector('.lightbox-date').textContent = artwork.date || '';
             lightbox.classList.add('open');
             document.body.style.overflow = 'hidden';
