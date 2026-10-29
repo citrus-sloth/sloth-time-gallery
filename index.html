@@ -355,23 +355,47 @@
             margin-bottom: 24px;
         }
 
-        .official-link {
-            display: inline-block;
-            color: #666;
-            text-decoration: none;
-            font-weight: 300;
-            font-size: 0.9em;
-            letter-spacing: 0.1em;
-            padding: 12px 24px;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+        .icon-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 34px;
         }
 
-        .official-link:hover {
+        .icon-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #8a8a8a;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-link svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-link svg .fill {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .icon-link span {
+            font-size: 0.7em;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .icon-link:hover {
             color: #2c3e50;
-            border-color: #2c3e50;
-            background-color: #f9f9f9;
+            transform: translateY(-2px);
         }
 
         /* ライトボックス - 2回目のクリックで作品を大きく表示 */
@@ -505,10 +529,12 @@
             <!-- Links -->
             <div class="official-links">
                 <h3 class="official-links-title">Links</h3>
-                <a href="https://sloth-nft.life" target="_blank" class="official-link">Sloth NFT Official Site</a>
-                <a href="https://x.com/sloth_life_nft" target="_blank" class="official-link">Sloth NFT Official X</a>
-                <a href="https://x.com/gcitrus1" target="_blank" class="official-link">citrus (X)</a>
-                <a href="https://instagram.com/citrus_swc" target="_blank" class="official-link">citrus (Instagram)</a>
+                <div class="icon-links">
+                    <a class="icon-link" href="https://sloth-nft.life" target="_blank" title="Sloth NFT Official Site" aria-label="Sloth NFT Official Site"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>Official</span></a>
+                    <a class="icon-link" href="https://x.com/sloth_life_nft" target="_blank" title="Sloth NFT Official X" aria-label="Sloth NFT Official X"><svg viewBox="0 0 24 24"><path class="fill" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>Official</span></a>
+                    <a class="icon-link" href="https://instagram.com/citrus_swc" target="_blank" title="citrus (Instagram)" aria-label="citrus (Instagram)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="fill" cx="17.2" cy="6.8" r="1.1"/></svg><span>citrus</span></a>
+                    <a class="icon-link" href="https://x.com/gcitrus1" target="_blank" title="citrus (X)" aria-label="citrus (X)"><svg viewBox="0 0 24 24"><path class="fill" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>citrus</span></a>
+                </div>
             </div>
         </section>
     </div>
